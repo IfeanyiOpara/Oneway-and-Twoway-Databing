@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.onewaytwowaydatabinding.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.currentRandomFruitName}"
+            tools:text="Some Random Fruit Name"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.12"
+            android:textSize="23sp"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Fruit"
+            android:onClick="@{() -> viewmodel.onChangeRandomFruitClick()}"
+            app:layout_constraintTop_toBottomOf="@+id/text_view"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter a fruit name"
+            android:text="@={viewmodel.editTextContent}"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.19"
+            app:layout_constraintWidth_percent="0.8"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display Edit Text Content"
+            android:onClick="@{() -> viewmodel.onDisplayEditTextContentClick()}"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.displayedEditTextContent}"
+            tools:text="Content of Edit Text"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            app:layout_constraintTop_toBottomOf="@+id/button2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            android:textSize="23sp"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Random Fruit fro Edittext"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:onClick="@{() -> viewmodel.onSelectRandomEditTextFruit()}"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.475"
+            app:layout_constraintHorizontal_bias="0.511"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
